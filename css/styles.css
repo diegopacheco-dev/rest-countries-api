@@ -22,53 +22,119 @@
   --fs-detail-size: 16px;
 
   /* ===== HEADER HEIGHT ===== */
-  --header-height: 85px
+  --header-height: 80px;
 }
 
 body {
   font-family: "Nunito Sans", sans-serif;
   margin-top: var(--header-height);
+  margin-bottom: 5rem;
+  background-color: var(--color-very-ligth-gray);
 }
 
 /* ===== ESTILOS GENERALES ===== */
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-button, input {
-    outline: none;
-    border: none;
-    background-color: transparent;
+button,
+input,
+select {
+  outline: none;
+  border: none;
+  background-color: transparent;
 }
 
 .width-container {
-    max-width: 1024px;
-    width: calc(100% - 2em);
-    margin: 0 auto;
+  max-width: 1024px;
+  width: calc(100% - 2em);
+  margin: 0 auto;
 }
 
 /* ===== HEADER ===== */
 
 header {
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 0 10px 0 rgba(177, 177, 177, 0.425);
-    position: fixed;
-    top: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(177, 177, 177, 0.425);
+  position: fixed;
+  top: 0;
 }
 
 .header-container {
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-container h1 {
-    font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 /* ===== SEARCH AND FILTER ===== */
 main {
-    margin-top: 2em;
+  margin-top: 2em;
+}
+
+.search-input-container {
+  width: 100%;
+  margin-top: 6.8em;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
+  padding: 1em 1em 1em 1.5em;
+  border-radius: 0.3em;
+}
+
+.search-input-container input {
+  margin-left: 1em;
+  font-size: 0.9em;
+}
+.search-input-container input::placeholder {
+  color: var(--color-dark-gray);
+}
+
+.filter-countries {
+  width: 60%;
+  margin-top: 3em;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
+  padding: 1em 1em 1em 1.5em;
+  border-radius: 0.3em;
+}
+
+.countries-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  margin-top: 2em;
+  padding: 0 2em;
+  font-size: 15px;
+}
+
+.country {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
+  border-radius: 0.3em;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.country-img {
+    width: 100%;
+}
+
+.country-info {
+    padding: 1.5em 1.5em 2.5em 1.5em;
+}
+
+.country-name {
+    padding-bottom: 0.9em;
+}
+
+.country-detail {
+    font-size: 14px;
+    padding-bottom: 0.25em;
+}
+.country-detail b {
+    font-weight: 600;
 }
