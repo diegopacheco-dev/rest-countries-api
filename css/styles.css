@@ -7,7 +7,7 @@
 }
 
 :root {
-  max-width: 1440px;
+  --max-width: 1440px;
 
   /* ===== COLORS ===== */
   --color-dark-blue: hsl(209, 23%, 22%);
@@ -35,6 +35,7 @@ body {
 /* ===== ESTILOS GENERALES ===== */
 a {
   text-decoration: none;
+  color: black;
 }
 
 button,
@@ -46,7 +47,7 @@ select {
 }
 
 .width-container {
-  max-width: 1024px;
+  max-width: var(--max-width);
   width: calc(100% - 2em);
   margin: 0 auto;
 }
@@ -77,38 +78,70 @@ main {
   margin-top: 2em;
 }
 
+.search-and-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2em;
+  margin-top: 6.8em;
+}
+
 .search-input-container {
   width: 100%;
-  margin-top: 6.8em;
+  max-width: 28em;
   background-color: white;
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
-  padding: 1em 1em 1em 1.5em;
+  padding: 0 1em 0 1.5em;
   border-radius: 0.3em;
+  display: flex;
+  align-items: center;
 }
 
 .search-input-container input {
   margin-left: 1em;
   font-size: 0.9em;
+  width: 100%;
+  padding: 1em 0;
 }
 .search-input-container input::placeholder {
   color: var(--color-dark-gray);
 }
 
 .filter-countries {
-  width: 60%;
-  margin-top: 3em;
+  width: 15em;
   background-color: white;
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
   padding: 1em 1em 1em 1.5em;
   border-radius: 0.3em;
 }
 
+@media screen and (min-width: 768px) {
+    .search-and-filter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* ===== COUNTRIES ===== */
+
 .countries-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-  margin-top: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 2em;
+  margin-top: 2.3em;
   padding: 0 2em;
   font-size: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .countries-container {
+    gap: 3em;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .countries-container {
+    grid-template-columns: repeat(4, minmax(16em, 1fr));
+    gap: 3em;
+  }
 }
 
 .country {
@@ -116,25 +149,24 @@ main {
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.24);
   border-radius: 0.3em;
   overflow: hidden;
-  margin-bottom: 2.5rem;
 }
 
 .country-img {
-    width: 100%;
+  width: 100%;
 }
 
 .country-info {
-    padding: 1.5em 1.5em 2.5em 1.5em;
+  padding: 1.5em 1.5em 2.5em 1.5em;
 }
 
 .country-name {
-    padding-bottom: 0.9em;
+  padding-bottom: 0.9em;
 }
 
 .country-detail {
-    font-size: 14px;
-    padding-bottom: 0.25em;
+  font-size: 14px;
+  padding-bottom: 0.25em;
 }
 .country-detail b {
-    font-weight: 600;
+  font-weight: 600;
 }
