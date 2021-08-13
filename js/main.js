@@ -1,14 +1,12 @@
+import {getAllCountries} from './services.js'
+
+
 const countriesContainer = document.getElementById("countriesContainer");
 const selectRegion = document.getElementById("selectRegion");
 const inputSearch = document.getElementById("inputSearch");
-const formSearch = document.getElementById("formSearch");
+let countriesCard;
 
-const getAllCountries = async () => {
-  let request = await fetch("https://restcountries.eu/rest/v2/all");
-  let data = await request.json();
-  console.log(data);
-  return data;
-};
+
 
 const searchCountry = async (country) => {
   let request = await fetch(
@@ -30,9 +28,12 @@ const renderCountries = (countries = [], countriesContainer) => {
 
   countries.forEach((country) => {
     let cardCountry = document.createElement("article");
-    cardCountry.innerHTML = `<article class="country">
-    
+    cardCountry.innerHTML = `<article class="country" data-country=${encodeURI(
+      country.name
+    )}>
+        <div class="country-img-wrapper">
         <img src=${country.flag} alt="" class="country-img" />
+        </div>
         <div class="country-info">
           <h3 class="country-name">${country.name}</h3>
           <p class="country-detail"><b>Population: </b>${country.population}</p>
@@ -57,17 +58,37 @@ const filterCountriesByRegion = (
   });
 };
 
-getAllCountries().then((countries) => {
-  filterCountriesByRegion(selectRegion, countries, countriesContainer);
-  renderCountries(countries, countriesContainer);
-});
+const asignarEnlaceAbrirDetallePais = (countriesElements = []) => {
+  countriesElements.forEach((country) => {
+    country.addEventListener("click", () => {
+      document.location = `/countryDetails.html?country=${country.dataset.country}`;
+    });
+  });
+};
 
-formSearch.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (inputSearch.value.trim().length === 0) {
-    return;
+const renderizadoInicial = () => {
+  getAllCountries().then((countries) => {
+    filterCountriesByRegion(selectRegion, countries, countriesContainer);
+    renderCountries(countries, countriesContainer);
+    // Luego de renderizar, obtenemos todos los elementos paises
+    countriesCard = Array.from(document.querySelectorAll(".country"));
+    asignarEnlaceAbrirDetallePais(countriesCard);
+  });
+};
+renderizadoInicial();
+
+// ===== Buscar país =====
+inputSearch.addEventListener("keyup", (e) => {
+  // Si el input esta vacio, renderizamos todos los paises
+  if (e.target.value.trim().length === 0) {
+    renderizadoInicial();
   }
-  searchCountry(inputSearch.value).then((data) =>
-    renderCountries(data, countriesContainer)
-  );
+  // Hacemos la busqueda
+  searchCountry(e.target.value).then((data) => {
+    // Renderizamos la data
+    renderCountries(data, countriesContainer);
+    // Luego de renderizar, obtenemos todos los elementos paises
+    countriesCard = Array.from(document.querySelectorAll(".country"));
+    asignarEnlaceAbrirDetallePais(countriesCard);
+  });
 });
