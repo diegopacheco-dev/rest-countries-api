@@ -4,10 +4,8 @@ export const getAllCountries = async () => {
   return data;
 };
 
-export const getCountryByName = async (nameCountry = "") => {
-  const request =
-    await fetch(`https://restcountries.eu/rest/v2/name/${nameCountry}
-      `);
+export const getCountryByCode = async (codeCountry = "") => {
+  const request = await fetch(`https://restcountries.eu/rest/v2/alpha/${codeCountry}`);
   const data = await request.json();
   return data;
 };
@@ -17,6 +15,7 @@ export const getCountriesByListOfCodes = async (arrayOfCodes = "") => {
   const request =
     await fetch(`https://restcountries.eu/rest/v2/alpha?codes=${lista}
       `);
+  if (request.status === 400)return [];   
   const data = await request.json();
   return data;
 };
