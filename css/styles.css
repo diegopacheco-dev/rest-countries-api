@@ -81,6 +81,10 @@ header {
   font-size: 1.1em;
 }
 
+.toggle-theme {
+  cursor: pointer;
+}
+
 /* ===== SEARCH AND FILTER ===== */
 main {
   margin-top: 2em;
@@ -160,6 +164,7 @@ main {
 }
 
 .country-img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -190,6 +195,7 @@ main {
   align-items: center;
   padding: 0.4em;
   margin-top: 8.5em;
+  cursor: pointer;
 }
 
 .country-details {
@@ -221,6 +227,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.8em;
+
 }
 
 .border-countries-container {
@@ -234,6 +241,8 @@ main {
   font-weight: 500;
   padding: 0.4em;
   text-align: center;
+  cursor: pointer;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -280,9 +289,40 @@ main {
   .country-details {
     align-items: center;
   }
-  
+
   .country-details__img {
     width: 42%;
   }
-
 }
+
+/* ===== DARK THEME ===== */
+
+/* ===== index.html ===== */
+body.darkmode {
+  background-color: var(--color-very-dark);
+  color: white;
+}
+
+.darkmode header {
+  background-color: var(--color-dark-blue);
+  box-shadow: none;
+}
+.darkmode h1 {
+  color: white;
+}
+
+.darkmode button,
+.darkmode input,
+.darkmode select,
+.darkmode .btn,
+.darkmode .search-input-container input::placeholder, .darkmode .country {
+  background-color: var(--color-dark-blue);
+  color: var(--color-very-ligth-gray);
+  box-shadow: none;
+}
+
+.darkmode .country-name {
+  color: white;
+}
+
+/* ===== countryDetails.html ===== */
