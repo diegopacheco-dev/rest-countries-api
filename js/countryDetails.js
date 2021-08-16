@@ -1,4 +1,7 @@
-import { getCountryByName, getCountriesByListOfCodes } from "./services.js";
+import { getCountryByCode, getCountriesByListOfCodes } from "./services.js";
+import { changeTheme, loadTheme } from './utils.js'
+
+loadTheme();
 
 // Agregamos funcionalidad al boton back
 const buttonBack = document.getElementById("buttonBack");
@@ -57,28 +60,28 @@ const renderizarPais = async (country, idContainer) => {
   <div class="country-details__border-countries">
     <p class="country-detail"><b>Border Countries: </b></p>
     <div class="border-countries-container">
-    ${country.borders.map(
-      (border) => `<button data-country=${encodeURI(border)}
-      class="btn border-country">${border}</button>`
-    ).join("")}
+    ${country.borders.length > 0? country.borders.map(
+      (border) => `<button data-country=${border.alpha3Code}
+      class="btn border-country">${border.name}</button>`
+    ).join("") : "<p style='grid-column: 1 / -1'>- Country without borders</p>"}
       
     </div>
   </div>
 </div>`;
 };
 
+changeTheme("toggleTheme");
+
 
 // Consumimos la informacion del pais del queryparam
 let countryName = obtenerValorDeQueryParams("country");
-getCountryByName(countryName).then((dataCountry) => {
-  dataCountry = dataCountry[0];
+getCountryByCode(countryName).then((dataCountry) => {
   // Consumimos la info de los paises fronterizos
   getCountriesByListOfCodes(dataCountry.borders).then((countries) => {
     // Armamos el obj pais que renderizaremos
-    let namesBordersCountries = countries.map((country) => country.name);
     let objCountry = {
       ...dataCountry,
-      borders: namesBordersCountries,
+      borders: countries,
     };
 
     // Renderizamos la info del objCountry

@@ -1,12 +1,14 @@
 import {getAllCountries} from './services.js'
+import { changeTheme, loadTheme } from './utils.js'
 
+loadTheme();
 
 const countriesContainer = document.getElementById("countriesContainer");
 const selectRegion = document.getElementById("selectRegion");
 const inputSearch = document.getElementById("inputSearch");
 let countriesCard;
 
-
+changeTheme("toggleTheme");
 
 const searchCountry = async (country) => {
   let request = await fetch(
@@ -28,9 +30,9 @@ const renderCountries = (countries = [], countriesContainer) => {
 
   countries.forEach((country) => {
     let cardCountry = document.createElement("article");
-    cardCountry.innerHTML = `<article class="country" data-country=${encodeURI(
-      country.name
-    )}>
+    cardCountry.innerHTML = `<article class="country" data-country=${
+      country.alpha3Code
+    }>
         <div class="country-img-wrapper">
         <img src=${country.flag} alt="" class="country-img" />
         </div>
