@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Countries API REST</title>
     <!-- ===== BOX ICONS ===== -->
     <link
       href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
@@ -12,13 +12,18 @@
     />
     <!-- ====== STYLES CSS ===== -->
     <link rel="stylesheet" href="./css/styles.css" />
+    <!-- ===== Loader ===== -->
+    <link rel="stylesheet" href="./css/loader.css" />
   </head>
   <body>
     <header>
       <div class="header-container width-container">
-        <a href="
-        "><h1>Where in the world?</h1></a>
-        
+        <a
+          href="
+        "
+          ><h1>Where in the world?</h1></a
+        >
+
         <button id="toggleTheme" class="toggle-theme">
           <i class="bx bx-moon"></i>
           Dark Mode
@@ -29,9 +34,14 @@
       <div class="search-and-filter">
         <div class="btn search-input-container" id="formSearch">
           <i class="bx bx-search-alt-2"></i>
-          <input type="text" max="56" id="inputSearch" placeholder="Search for a country..." />
+          <input
+            type="text"
+            max="56"
+            id="inputSearch"
+            placeholder="Search for a country..."
+          />
         </div>
-        <select class="btn filter-countries" id="selectRegion" name="" id="" >
+        <select class="btn filter-countries" id="selectRegion" name="" id="">
           <option disabled selected value="">Filter by Region</option>
           <option value="africa">Africa</option>
           <option value="americas">Americas</option>
@@ -42,6 +52,9 @@
       </div>
 
       <section class="countries-container" id="countriesContainer">
+        <div class="loader-wrapper">
+          <div class="loader">Loading...</div>
+        </div>
         <!-- <article class="country" data-country="Peru">
             <div class="country-img-wrapper">
             <img src="" alt="" class="country-img" />
