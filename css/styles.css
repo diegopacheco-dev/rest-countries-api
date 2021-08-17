@@ -68,6 +68,7 @@ header {
   box-shadow: 0 0 10px 0 rgba(177, 177, 177, 0.425);
   position: fixed;
   top: 0;
+  z-index: 9;
 }
 
 .header-container {
@@ -83,6 +84,15 @@ header {
 
 .toggle-theme {
   cursor: pointer;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  transition: all 0.3s;
+}
+
+.toggle-theme:hover {
+  background-color: var(--color-dark-blue);
+  color: white;
 }
 
 /* ===== SEARCH AND FILTER ===== */
@@ -157,6 +167,11 @@ main {
   overflow: hidden;
   height: 100%;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.country:hover {
+  transform: scale(1.03);
 }
 
 .country-img-wrapper {
@@ -307,6 +322,12 @@ body.darkmode {
   background-color: var(--color-dark-blue);
   box-shadow: none;
 }
+
+.darkmode .toggle-theme:hover {
+  color: var(--color-dark-blue);
+  background-color: white;
+}
+
 .darkmode h1 {
   color: white;
 }
