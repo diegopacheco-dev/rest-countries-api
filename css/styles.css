@@ -59,6 +59,10 @@ select {
   background-color: white;
   padding: 0 1em 0 1.5em;
 }
+.btn:hover {
+  box-shadow: 0 0 10px skyblue;
+  
+}
 
 /* ===== HEADER ===== */
 
@@ -212,6 +216,7 @@ main {
   margin-top: 8.5em;
   cursor: pointer;
 }
+
 
 .country-details {
   margin-top: 3.8em;
