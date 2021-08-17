@@ -19,7 +19,7 @@ const obtenerValorDeQueryParams = (claveParam) => {
 const asignarEnlaceAbrirDetallePais = (countriesElements = []) => {
     countriesElements.forEach((country) => {
       country.addEventListener("click", () => {
-        document.location = `/countryDetails.html?country=${country.dataset.country}`;
+        document.location = `/rest-countries-api/countryDetails.html?country=${country.dataset.country}`;
       });
     });
   };
