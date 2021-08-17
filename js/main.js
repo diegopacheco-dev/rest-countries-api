@@ -1,5 +1,5 @@
-import {getAllCountries} from './services.js'
-import { changeTheme, loadTheme } from './utils.js'
+import { getAllCountries } from "./services.js";
+import { changeTheme, loadTheme } from "./utils.js";
 
 loadTheme();
 
@@ -30,9 +30,7 @@ const renderCountries = (countries = [], countriesContainer) => {
 
   countries.forEach((country) => {
     let cardCountry = document.createElement("article");
-    cardCountry.innerHTML = `<article class="country" data-country=${
-      country.alpha3Code
-    }>
+    cardCountry.innerHTML = `<article class="country" data-country=${country.alpha3Code}>
         <div class="country-img-wrapper">
         <img src=${country.flag} alt="" class="country-img" />
         </div>
@@ -57,10 +55,12 @@ const filterCountriesByRegion = (
       (country) => country.region.toLowerCase() === e.target.value.toLowerCase()
     );
     renderCountries(filtrados, countriesContainer);
+    // Luego de renderizar, obtenemos todos los elementos paises
+    console.log("asignando link al detalle");
+    countriesCard = Array.from(document.querySelectorAll(".country"));
+    console.log(countriesCard);
+    asignarEnlaceAbrirDetallePais(countriesCard);
   });
-  // Luego de renderizar, obtenemos todos los elementos paises
-  countriesCard = Array.from(document.querySelectorAll(".country"));
-  asignarEnlaceAbrirDetallePais(countriesCard)
 };
 
 const asignarEnlaceAbrirDetallePais = (countriesElements = []) => {
@@ -68,7 +68,6 @@ const asignarEnlaceAbrirDetallePais = (countriesElements = []) => {
     country.addEventListener("click", () => {
       document.location = `/rest-countries-api/countryDetails.html?country=${country.dataset.country}`;
       // window.open(`/rest-countries-api/countryDetails.html?country=${country.dataset.country}`);
-
     });
   });
 };
