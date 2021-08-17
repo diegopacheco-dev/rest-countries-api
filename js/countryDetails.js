@@ -6,7 +6,7 @@ loadTheme();
 // Agregamos funcionalidad al boton back
 const buttonBack = document.getElementById("buttonBack");
 buttonBack.addEventListener("click", () => {
-  document.location = "/rest-countries-api/index.html";
+  document.location = "/rest-countries-api";
 });
 
 // Funcion que obtiene el valor de un queryparam
