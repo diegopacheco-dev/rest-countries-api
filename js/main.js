@@ -58,12 +58,17 @@ const filterCountriesByRegion = (
     );
     renderCountries(filtrados, countriesContainer);
   });
+  // Luego de renderizar, obtenemos todos los elementos paises
+  countriesCard = Array.from(document.querySelectorAll(".country"));
+  asignarEnlaceAbrirDetallePais(countriesCard)
 };
 
 const asignarEnlaceAbrirDetallePais = (countriesElements = []) => {
   countriesElements.forEach((country) => {
     country.addEventListener("click", () => {
-      document.location = `/countryDetails.html?country=${country.dataset.country}`;
+      // document.location = `/countryDetails.html?country=${country.dataset.country}`;
+      window.open(`/countryDetails.html?country=${country.dataset.country}`);
+
     });
   });
 };
